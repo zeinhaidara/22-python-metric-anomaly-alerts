@@ -1,0 +1,26 @@
+[
+  {
+    "namespace": "AWS/EC2",
+    "metric_name": "CPUUtilization",
+    "dimensions": {
+      "InstanceId": "i-0123456789abcdef0"
+    },
+    "stat": "Average",
+    "period_seconds": 300,
+    "window_seconds": 3600,
+    "z_score_threshold": 3.0,
+    "recommended_action": "Check for a runaway process or an unexpected traffic spike; consider scaling the instance group."
+  },
+  {
+    "namespace": "AWS/ApplicationELB",
+    "metric_name": "HTTPCode_Target_5XX_Count",
+    "dimensions": {
+      "LoadBalancer": "app/example-lb/50dc6c495c0c9188"
+    },
+    "stat": "Sum",
+    "period_seconds": 60,
+    "window_seconds": 1800,
+    "z_score_threshold": 2.5,
+    "recommended_action": "Check application logs for the service behind example-lb.example.com; roll back the latest deploy if errors started right after it."
+  }
+]
