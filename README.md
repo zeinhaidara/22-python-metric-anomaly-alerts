@@ -1,4 +1,4 @@
-# metric-anomaly-alerts
+# CloudWatch metric anomaly alerts
 
 A Python CLI that pulls metrics from CloudWatch, flags anomalies with a rolling z-score, and
 posts a rich Slack alert - current value, expected range, and a recommended action - for each
@@ -107,7 +107,7 @@ the same detection result for the same underlying data (the z-score calculation 
 function of the window) and, if still anomalous, a second Slack post - there is no
 de-duplication of repeated alerts across runs.
 
-## Tests
+## Validation
 
 ```bash
 pip install -r requirements-test.txt
@@ -139,7 +139,7 @@ Never run against real CloudWatch and never posted to a real Slack webhook. Vali
 `ruff`, `ruff format --check`, and the hand-written-fake test suite above. The live CloudWatch
 `get_metric_data` call and the real Slack `POST` have both never been exercised end to end.
 
-## Known limits
+## Known limitations
 
 - CloudWatch only; Azure Monitor and GCP Monitoring are not implemented, only left as an
   extension point behind the same adapter shape.
