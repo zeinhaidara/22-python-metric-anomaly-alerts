@@ -4,6 +4,11 @@ A Python CLI that pulls metrics from CloudWatch, flags anomalies with a rolling 
 posts a rich Slack alert - current value, expected range, and a recommended action - for each
 one that trips its configured threshold.
 
+Why it matters: fixed CloudWatch thresholds either fire constantly or miss problems on metrics
+whose normal level moves around. Comparing each value with its own recent history catches
+unusual jumps, and putting the expected range and a next step in the alert saves the first few
+minutes of an investigation.
+
 **Scope.** CloudWatch only. Azure Monitor and GCP Monitoring are explicitly out of scope for
 this build; `cloudwatch.py` is kept small and isolated behind a `fetch_metric_values(client,
 metric_cfg)` shape specifically so another provider could be added later without touching the
